@@ -17,7 +17,7 @@ public class WordVec {
     public static void main(String[] args) throws Exception {
         // setup word2vec
         // the iterator seperates sentences using a newline character
-        SentenceIterator iter = new LineSentenceIterator(new File("/home/zk/words-nlp/sentences.txt"));
+        SentenceIterator iter = new LineSentenceIterator(new File("/words-nlp/sentences.txt"));
         iter.setPreProcessor(new SentencePreProcessor() {
             @Override
             public String preProcess(String sentence) {
@@ -48,12 +48,10 @@ public class WordVec {
 
         System.out.println("Writing the model to file");
         // write all word vectors to a file, this model can be reloaded from here
-        WordVectorSerializer.writeWordVectors(vec, "/home/zk/words-nlp/word-vectors.txt");
+        WordVectorSerializer.writeWordVectors(vec, "/words-nlp/word-vectors.txt");
 
         Collection<String> lst = vec.wordsNearest("college", 5);
         System.out.println(lst);
 
-        // lookup vector for word
-        double[] wordVector = vec.getWordVector("job");
     }
 }
