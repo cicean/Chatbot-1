@@ -50,7 +50,7 @@ public class Chatbot {
         net.setListeners(new ScoreIterationListener(1));
 
         System.out.println("Loading the word vector mappings");
-        WordVectors wordVectors = WordVectorSerializer.loadStaticModel(new File("/home/zk/words-nlp/word-vectors.txt"));
+        WordVectors wordVectors = WordVectorSerializer.loadStaticModel(new File("/words-nlp/word-vectors.txt"));
 
         System.out.println("Mapping training data");
         List<String> labels = new ArrayList<>(Arrays.asList(
@@ -64,7 +64,7 @@ public class Chatbot {
             "what are your weaknesses",         // 7
             "what is your major"                // 8
         ));
-        ChatbotIterator train = new ChatbotIterator(wordVectors, 32, labels, 15, new File("/home/zk/words-nlp/chatbot-questions.txt"));
+        ChatbotIterator train = new ChatbotIterator(wordVectors, 32, labels, 15, new File("/words-nlp/chatbot-questions.txt"));
 
         System.out.println("Training the network");
         for (int i = 0; i < nEpochs; i++) {
